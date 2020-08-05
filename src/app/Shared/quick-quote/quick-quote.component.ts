@@ -6,8 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./quick-quote.component.css']
 })
 export class QuickQuoteComponent implements OnInit {
+  
+  piecetable: boolean = false;
+  weighttable: boolean = false;
 
-  constructor() { }
+  psel(){
+    this.piecetable = true;
+    this.weighttable = false;
+  }
+  wsel()
+  {
+    this.weighttable = true;
+    this.piecetable = false;
+  }
+  constructor() { 
+    
+  }
 
   ngOnInit(): void {
   }
