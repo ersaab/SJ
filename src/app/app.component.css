@@ -5,7 +5,10 @@
     text-align: center;
     justify-content: center;
 }
-
+.container-fluid
+{
+    background-color: rgba(85, 185, 247, 0.514);
+}
 .navi
 {
     padding: 0px;
