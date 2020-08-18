@@ -5,11 +5,20 @@
     text-align: center;
     justify-content: center;
 }
-.container-fluid
-{
-    background-color: rgba(85, 185, 247, 0.514);
-}
 .navi
 {
     padding: 0px;
 }
+.main
+{
+    width: auto;
+    overflow-y: auto;
+    height: 450px;
+}
+/* .footer {
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    background-color: lightblue;
+    width: 100%;
+} */

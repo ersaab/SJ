@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
+
 import { KIRPAComponent } from './AKAAL/kirpa.component';
+import { AppComponent } from './app.component';
 import { HeaderComponent } from './Dashboard/header/header.component';
 import { FooterComponent } from './Dashboard/footer/footer.component';
 import { SidebarComponent } from './Dashboard/sidebar/sidebar.component';
@@ -62,7 +63,8 @@ import { CustListComponent } from './customer/cust-list/cust-list.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

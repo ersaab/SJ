@@ -1,114 +1,164 @@
 <hr>
-<h4>Quick Quote</h4>
+<h4>ਕੱਚਾ ਹਿਸਾਬ (Quick Quote)</h4>
 <hr>
 <div class="container-fluid">
     <div class="row">
-    <div class="col-sm-12">
-       <h6 class="text-center">Please Select Type</h6>
-       <div class="row">
-           <div class="col-sm-12 text-center">
-            <button class="btn btn-primary" (click)="psel()" >Piece</button> &nbsp;
-            <button class="btn btn-primary" (click)="wsel()" >Weight</button>
-           </div>
-       </div>
+        <div class="col-sm-12 text-center">
+        <button class="btn btn-primary" (click)="psel()" >ਪੀਸ (Piece)</button> &nbsp;
+        <button class="btn btn-primary" (click)="wsel()" >ਵਜਨ (Weight)</button>
+        </div>
     </div>
-    </div>
-    <br />
+<br/>
 
 <form class="form-group" >
     <div [hidden] = "!piecetable" class="container-fluid">
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="nameOfCommo" >Name:</label>
+                <label for="nameOfCommo" >ਨਾਮ (Name of Commodity):</label>
                 <input type="text" class="form-control" id="nameOfCommo">
             </div>
         </div>
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="typeOfCommo" >Type:</label>
-                <input type="text" class="form-control" id="typeOfCommo">
-            </div>
-        </div>
-        <div class="row form-group ">
-            <div class="col-sm-12">
-                <label for="metalOfCommo" >Metal:</label>
+                <label for="metalOfCommo" > ਧਾਤ (Metal):</label>
                 <select class="form-control" id="metalOfCommo">
-                    <option>Select</option>
-                    <option>Gold</option>
-                    <option>Silver</option>
-                    <option>Platinum</option>
+                    <option>ਚੁਣੋ (Select)</option>
+                    <option>ਸੋਨਾ (Gold)</option>
+                    <option>ਚਾਂਦੀ (Silver)</option>
+                    <option>ਬੰਦੇਲ/ਤਾਂਬਾ (Copper)</option>
                 </select>
             </div>
         </div>
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="metalOfCommo" >Metal Price :</label>
+                <label for="metalOfCommo" > ਇੱਕ ਗਰਾਮ ਦਾ ਭਾਅ   (Metal Price /gram):</label>
                 <input type="text" class="form-control" id="priceOfCommo">
             </div>
         </div>
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="weightOfCommo" >Weight:</label>
-                <input type="text" class="form-control" id="weightOfCommo">
-            </div>
-        </div>
-        <div class="row form-group ">
-            <div class="col-sm-12">
-                <label for="pieceOfCommo" >No of Pieces:</label>
+                <label for="pieceOfCommo" > ਗਿਣਤੀ (No of Pieces):</label>
                 <input type="number" class="form-control" id="pieceOfCommo">
             </div>
         </div>
-        <div class="row ">
-            <div class="col-sm-12">
-                <button class="btn btn-success">Calculate</button>
-            </div>
-        </div>
-    </div>
-</form>
-
-<form class="form-group" >
-    <div [hidden] = "!weighttable" class="container-fluid">
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="nameOfCommo" >Namex:</label>
-                <input type="text" class="form-control" id="nameOfCommo">
-            </div>
-        </div>
-        <div class="row form-group ">
-            <div class="col-sm-12">
-                <label for="typeOfCommo" >Type:</label>
-                <input type="text" class="form-control" id="typeOfCommo">
-            </div>
-        </div>
-        <div class="row form-group ">
-            <div class="col-sm-12">
-                <label for="metalOfCommo" >Metal:</label>
-                <select class="form-control" id="metalOfCommo">
-                    <option>Select</option>
-                    <option>Gold</option>
-                    <option>Silver</option>
-                    <option>Platinum</option>
-                </select>
-            </div>
-        </div>
-        <div class="row form-group ">
-            <div class="col-sm-12">
-                <label for="metalOfCommo" >Metal Price :</label>
-                <input type="text" class="form-control" id="priceOfCommo">
-            </div>
-        </div>
-        <div class="row form-group ">
-            <div class="col-sm-12">
-
-                <label for="weightOfCommo" >Weight:</label>
+                <label for="weightOfCommo" > ਵਜਨ (Weight):</label>
                 <input type="text" class="form-control" id="weightOfCommo">
             </div>
         </div>
         <div class="row ">
             <div class="col-sm-12">
-                <button class="btn btn-success" (click) >Calculate</button>
+                <button class="btn btn-success">ਹਿਸਾਬ ਲਗਾਓ (Calculate)</button>
             </div>
         </div>
     </div>
 </form>
+
+<form #weightCalc = "ngForm" class="form-group" (ngSubmit) = "calc(weightCalc.value)" >
+    <div [hidden] = "!weighttable" class="container-fluid">
+        <div class="row form-group ">
+            <div class="col-sm-12">
+                <label for="CommoName" >ਨਾਮ (Name of Commodity):</label>
+                <input type="text" class="form-control" name="commoName" ngModel>
+            </div>
+        </div>
+        <div class="row form-group ">
+            <div class="col-sm-12">
+                <label for="commoType" > ਧਾਤ (Metal):</label>
+                <select class="form-control" name="commoType" ngModel >
+                    <option>ਚੁਣੋ (Select)</option>
+                    <option>ਸੋਨਾ (Gold)</option>
+                    <option>ਚਾਂਦੀ (Silver)</option>
+                    <option>ਬੰਦੇਲ/ਤਾਂਬਾ (Copper)</option>
+                </select>
+            </div>
+        </div>
+        <div class="row form-group ">
+            <div class="col-sm-12">
+                <label for="metalOfCommo" > ਇੱਕ ਗਰਾਮ ਦਾ ਭਾਅ   (Metal Price /gram):</label>
+                <input type="text" class="form-control" name="commoPrice" ngModel>
+            </div>
+        </div>
+        <div class="row form-group ">
+            <div class="col-sm-12">
+                <label for="weight" > ਵਜਨ (Weight):</label>
+                <input type="number" class="form-control" name="weight" step="0.01" ngModel>
+            </div>
+        </div>
+        <div class="row form-group ">
+            <div class="col-sm-12">
+                <label for="labour" > ਲੇਬਰ (Labour):<span class="p">percentage %</span></label>
+                <input type="number" class="form-control" name="labour" step="0.01" ngModel>
+            </div>
+        </div>
+        <div class="row form-group ">
+            <div class="col-sm-12">
+                <label for="making" > ਬਣਵਾਈ (Making):<span class="p">percentage %</span></label>
+                <input type="number" class="form-control" name="making" step="0.01" ngModel>
+            </div>
+        </div>
+        <div class="row form-group ">
+            <div class="col-sm-12">
+                <label for="wastage" > ਵੇਸਟੇਜ/ਵੇਸਟੀ (Wastage):<span class="p">percentage %</span></label>
+                <input type="number" class="form-control" name="wastage" step="0.01" ngModel>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-sm-12">
+                <button class="btn btn-success" type="submit">ਹਿਸਾਬ ਲਗਾਓ (Calculate)</button>
+            </div>
+        </div>
+    </div>
+    <div class="row displayResult">
+        <table>
+            <tr>
+                <th>Name of Commodity :</th>
+                <td> {{commoName}} </td>
+            </tr>
+            <tr>
+                <th>Type of Commodity :</th>
+                <td> {{commoType}} </td>
+            </tr>
+            <tr>
+                <th>Metal Price :</th>
+                <td> {{commoPrice}} </td>
+            </tr>
+            <tr>
+                <th>Weight of Metal :</th>
+                <td> {{weight}} </td>
+            </tr>
+            <tr>
+                <th>Labour % :</th>
+                <td> {{labour}} </td>
+            </tr>
+            <tr>
+                <th>Making % :</th>
+                <td> {{making}} </td>
+            </tr>
+            <tr>
+                <th>Wastage % :</th>
+                <td> {{wastage}} </td>
+            </tr>
+            <tr>
+                <th>Total Charged % :</th>
+                <td> {{wastePercentage}} </td>
+            </tr>
+            <tr>
+                <th>Weight After Calculation :</th>
+                <td> {{deductWeight}} </td>
+            </tr>
+            <tr>
+                <th>Real Wast </th>
+                <td> {{realWeight}} </td>
+            </tr>
+            <tr>
+                <th>Cost :</th>
+                <td> {{total}} </td>
+            </tr>
+        </table>
+    </div>
+
+</form>
+
 </div>
