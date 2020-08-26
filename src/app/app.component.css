@@ -5,8 +5,20 @@
     text-align: center;
     justify-content: center;
 }
-
 .navi
 {
     padding: 0px;
 }
+.main
+{
+    width: auto;
+    overflow-y: auto;
+    height: 450px;
+}
+/* .footer {
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    background-color: lightblue;
+    width: 100%;
+} */
