@@ -106,59 +106,59 @@
         </div>
         <div class="row ">
             <div class="col-sm-12">
-                <button class="btn btn-success" type="submit">ਹਿਸਾਬ ਲਗਾਓ (Calculate)</button>
+                <button class="btn btn-success" [(ngModel)] = "open" type="submit">ਹਿਸਾਬ ਲਗਾਓ (Calculate)</button>
             </div>
         </div>
-    </div>
-    <div class="row displayResult">
-        <table>
-            <tr>
-                <th>Name of Commodity :</th>
-                <td> {{commoName}} </td>
-            </tr>
-            <tr>
-                <th>Type of Commodity :</th>
-                <td> {{commoType}} </td>
-            </tr>
-            <tr>
-                <th>Metal Price :</th>
-                <td> {{commoPrice}} </td>
-            </tr>
-            <tr>
-                <th>Weight of Metal :</th>
-                <td> {{weight}} </td>
-            </tr>
-            <tr>
-                <th>Labour % :</th>
-                <td> {{labour}} </td>
-            </tr>
-            <tr>
-                <th>Making % :</th>
-                <td> {{making}} </td>
-            </tr>
-            <tr>
-                <th>Wastage % :</th>
-                <td> {{wastage}} </td>
-            </tr>
-            <tr>
-                <th>Total Charged % :</th>
-                <td> {{wastePercentage}} </td>
-            </tr>
-            <tr>
-                <th>Weight After Calculation :</th>
-                <td> {{deductWeight}} </td>
-            </tr>
-            <tr>
-                <th>Real Wast </th>
-                <td> {{realWeight}} </td>
-            </tr>
-            <tr>
-                <th>Cost :</th>
-                <td> {{total}} </td>
-            </tr>
-        </table>
+        <div class="row displayResult">
+            <table>
+                <tr>
+                    <th>Name of Commodity :</th>
+                    <td> {{commoName}} </td>
+                </tr>
+                <tr>
+                    <th>Type of Commodity :</th>
+                    <td> {{commoType}} </td>
+                </tr>
+                <tr>
+                    <th>Metal Price :</th>
+                    <td> {{commoPrice}} </td>
+                </tr>
+                <tr>
+                    <th>Weight of Metal :</th>
+                    <td> {{weight}} </td>
+                </tr>
+                <tr>
+                    <th>Labour % :</th>
+                    <td> {{labour}} </td>
+                </tr>
+                <tr>
+                    <th>Making % :</th>
+                    <td> {{making}} </td>
+                </tr>
+                <tr>
+                    <th>Wastage % :</th>
+                    <td> {{wastage}} </td>
+                </tr>
+                <tr>
+                    <th>Total Charged % :</th>
+                    <td> {{wastePercentage}} </td>
+                </tr>
+                <tr>
+                    <th>Weight After Calculation :</th>
+                    <td> {{deductWeight}} </td>
+                </tr>
+                <tr>
+                    <th>Real Wast </th>
+                    <td> {{realWeight}} </td>
+                </tr>
+                <tr>
+                    <th>Cost :</th>
+                    <td> {{total}} </td>
+                </tr>
+            </table>
+        </div>
     </div>
 
 </form>
 
-</div>dcmkd
+</div>
