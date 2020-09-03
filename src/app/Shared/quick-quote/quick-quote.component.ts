@@ -10,6 +10,10 @@ export class QuickQuoteComponent implements OnInit {
   commoName;
   commoType;
   commoPrice;
+  piecePrice;
+  piece;
+  moneyTotal;
+  goldTotal;
   weight;
   purity;
   labour;
@@ -20,7 +24,8 @@ export class QuickQuoteComponent implements OnInit {
   realWeight;
   piecetable: boolean = false;
   weighttable: boolean = false;
-  displayResultDiv: boolean = true;
+  displayResultWeight: boolean = true;
+  displayResultPiece: boolean = true;
   total;
 
   psel(){
@@ -32,12 +37,26 @@ export class QuickQuoteComponent implements OnInit {
     this.weighttable = true;
     this.piecetable = false;
   }
-  displayResult()
+  displayResultW()
   {
-    this.displayResultDiv = false;
+    this.displayResultWeight = false;
+  }
+  displayResultP()
+  {
+    this.displayResultPiece = false;
   }
 
-  calc(data)
+  pcalc(data)
+  {
+    this.commoName = data.commoName;
+    this.commoType = data.commoType;
+    this.commoPrice = data.commoPrice;
+    this.piece = data.piece;
+    this.piecePrice = data.piecePrice;
+    this.moneyTotal = data.piece * data.piecePrice;
+    this.goldTotal = this.moneyTotal/data.commoPrice;
+  } 
+  wcalc(data)
   {
     this.commoName = data.commoName;
     this.commoType = data.commoType;
@@ -51,18 +70,7 @@ export class QuickQuoteComponent implements OnInit {
     this.deductWeight = (this.wastePercentage)/100 * data.weight;
     this.realWeight = data.weight - this.deductWeight;
     this.total = data.commoPrice * this.deductWeight;
-    // alert(
-    //   " Name " +data.commoName + " \n " +
-    //   " Type " +data.commoType + " \n " +
-    //   " Gold Rate " +data.commoPrice + " \n " +
-    //   " Weight of Metal " +data.weight + " \n " +
-    //   " Labour % " +data.labour + " \n " +
-    //   " Wastage % " +data.wastage + " \n " +
-    //   " Making % " +data.making + " \n " +
-    //   " Real Gold Weight " +this.realWeight + " \n " +
-    //   " Total Waste Percentage " +this.wastePercentage + " \n " +
-    //   " Total Cost " +this.total + " \n "
-    //   )
+    this.goldTotal = this.total/data.commoPrice;
   }
   constructor() {}
 
