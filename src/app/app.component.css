@@ -13,12 +13,11 @@
 {
     width: auto;
     overflow-y: auto;
-    height: 450px;
+    height: 455px;
 }
-/* .footer {
-    position: fixed;
-    height: 100px;
-    bottom: 0;
-    background-color: lightblue;
-    width: 100%;
-} */
+.footer {
+    position: absolute;
+    color: white;
+    background-color: #0275d8;
+    justify-content: center;
+}
