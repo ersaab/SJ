@@ -14,15 +14,14 @@
     <div [hidden] = "!piecetable" class="container-fluid">
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="nameOfCommo" >ਨਾਮ (Name of Commodity):</label>
-                <input type="text" class="form-control" id="nameOfCommo">
+                <label for="CommoName" >ਨਾਮ (Name of Customer):</label>
+                <input type="text" class="form-control" name="commoName" ngModel>
             </div>
         </div>
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="metalOfCommo" > ਧਾਤ (Metal):</label>
-                <select class="form-control" id="metalOfCommo">
-                    <option>ਚੁਣੋ (Select)</option>
+                <label for="commoType" > ਧਾਤ (Metal):</label>
+                <select class="form-control" name="commoType" ngModel >
                     <option>ਸੋਨਾ (Gold)</option>
                     <option>ਚਾਂਦੀ (Silver)</option>
                     <option>ਬੰਦੇਲ/ਤਾਂਬਾ (Copper)</option>
@@ -31,25 +30,43 @@
         </div>
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="metalOfCommo" > ਇੱਕ ਗਰਾਮ ਦਾ ਭਾਅ   (Metal Price /gram):</label>
-                <input type="text" class="form-control" id="priceOfCommo">
+                <label for="metalOfCommo" > ਇੱਕ ਗਰਾਮ ਦਾ ਭਾਅ   (Metal Price) <span class="p">/gram</span>:</label>
+                <input type="text" class="form-control" name="commoPrice" ngModel>
             </div>
         </div>
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="pieceOfCommo" > ਗਿਣਤੀ (No of Pieces):</label>
-                <input type="number" class="form-control" id="pieceOfCommo">
+                <label for="weight" > ਪੀਸਾਂ ਦੀ ਗਿਣਤੀ (Piece Count): <span class="p"> in number</span></label>
+                <input type="number" class="form-control" name="piece" step="0.01" ngModel>
             </div>
         </div>
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="weightOfCommo" > ਵਜਨ (Weight):</label>
-                <input type="text" class="form-control" id="weightOfCommo">
+                <label for="labour" > ਟੈੰਚ (Purity): <span class="p">percentage %</span></label>
+                <input type="number" class="form-control" name="purity" step="0.01" ngModel>
+            </div>
+        </div>
+        <div class="row form-group ">
+            <div class="col-sm-12">
+                <label for="labour" > ਲੇਬਰ (Labour): <span class="p">percentage %</span></label>
+                <input type="number" class="form-control" name="labour" step="0.01" ngModel>
+            </div>
+        </div>
+        <div class="row form-group ">
+            <div class="col-sm-12">
+                <label for="making" > ਬਣਵਾਈ (Making): <span class="p">percentage %</span></label>
+                <input type="number" class="form-control" name="making" step="0.01" ngModel>
+            </div>
+        </div>
+        <div class="row form-group ">
+            <div class="col-sm-12">
+                <label for="wastage" > ਵੇਸਟੇਜ/ਵੇਸਟੀ (Wastage): <span class="p">percentage %</span></label>
+                <input type="number" class="form-control" name="wastage" step="0.01" ngModel>
             </div>
         </div>
         <div class="row ">
             <div class="col-sm-12">
-                <button class="btn btn-success">ਹਿਸਾਬ ਲਗਾਓ (Calculate)</button>
+                <button class="btn btn-success" (click) = "displayResult()"  type="submit">ਹਿਸਾਬ ਲਗਾਓ (Calculate)</button>
             </div>
         </div>
     </div>
@@ -59,7 +76,7 @@
     <div [hidden] = "!weighttable" class="container-fluid">
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="CommoName" >ਨਾਮ (Name of Commodity):</label>
+                <label for="CommoName" >ਨਾਮ (Name of Customer):</label>
                 <input type="text" class="form-control" name="commoName" ngModel>
             </div>
         </div>
@@ -67,7 +84,6 @@
             <div class="col-sm-12">
                 <label for="commoType" > ਧਾਤ (Metal):</label>
                 <select class="form-control" name="commoType" ngModel >
-                    <option>ਚੁਣੋ (Select)</option>
                     <option>ਸੋਨਾ (Gold)</option>
                     <option>ਚਾਂਦੀ (Silver)</option>
                     <option>ਬੰਦੇਲ/ਤਾਂਬਾ (Copper)</option>
@@ -76,89 +92,99 @@
         </div>
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="metalOfCommo" > ਇੱਕ ਗਰਾਮ ਦਾ ਭਾਅ   (Metal Price /gram):</label>
+                <label for="metalOfCommo" > ਇੱਕ ਗਰਾਮ ਦਾ ਭਾਅ   (Metal Price) <span class="p">/gram</span>:</label>
                 <input type="text" class="form-control" name="commoPrice" ngModel>
             </div>
         </div>
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="weight" > ਵਜਨ (Weight):</label>
+                <label for="weight" > ਵਜਨ (Weight): <span class="p"> in grams</span></label>
                 <input type="number" class="form-control" name="weight" step="0.01" ngModel>
             </div>
         </div>
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="labour" > ਲੇਬਰ (Labour):<span class="p">percentage %</span></label>
+                <label for="labour" > ਟੈੰਚ (Purity): <span class="p">percentage %</span></label>
+                <input type="number" class="form-control" name="purity" step="0.01" ngModel>
+            </div>
+        </div>
+        <div class="row form-group ">
+            <div class="col-sm-12">
+                <label for="labour" > ਲੇਬਰ (Labour): <span class="p">percentage %</span></label>
                 <input type="number" class="form-control" name="labour" step="0.01" ngModel>
             </div>
         </div>
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="making" > ਬਣਵਾਈ (Making):<span class="p">percentage %</span></label>
+                <label for="making" > ਬਣਵਾਈ (Making): <span class="p">percentage %</span></label>
                 <input type="number" class="form-control" name="making" step="0.01" ngModel>
             </div>
         </div>
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="wastage" > ਵੇਸਟੇਜ/ਵੇਸਟੀ (Wastage):<span class="p">percentage %</span></label>
+                <label for="wastage" > ਵੇਸਟੇਜ/ਵੇਸਟੀ (Wastage): <span class="p">percentage %</span></label>
                 <input type="number" class="form-control" name="wastage" step="0.01" ngModel>
             </div>
         </div>
         <div class="row ">
             <div class="col-sm-12">
-                <button class="btn btn-success" [(ngModel)] = "open" type="submit">ਹਿਸਾਬ ਲਗਾਓ (Calculate)</button>
+                <button class="btn btn-success" (click) = "displayResult()"  type="submit">ਹਿਸਾਬ ਲਗਾਓ (Calculate)</button>
             </div>
-        </div>
-        <div class="row displayResult">
-            <table>
-                <tr>
-                    <th>Name of Commodity :</th>
-                    <td> {{commoName}} </td>
-                </tr>
-                <tr>
-                    <th>Type of Commodity :</th>
-                    <td> {{commoType}} </td>
-                </tr>
-                <tr>
-                    <th>Metal Price :</th>
-                    <td> {{commoPrice}} </td>
-                </tr>
-                <tr>
-                    <th>Weight of Metal :</th>
-                    <td> {{weight}} </td>
-                </tr>
-                <tr>
-                    <th>Labour % :</th>
-                    <td> {{labour}} </td>
-                </tr>
-                <tr>
-                    <th>Making % :</th>
-                    <td> {{making}} </td>
-                </tr>
-                <tr>
-                    <th>Wastage % :</th>
-                    <td> {{wastage}} </td>
-                </tr>
-                <tr>
-                    <th>Total Charged % :</th>
-                    <td> {{wastePercentage}} </td>
-                </tr>
-                <tr>
-                    <th>Weight After Calculation :</th>
-                    <td> {{deductWeight}} </td>
-                </tr>
-                <tr>
-                    <th>Real Wast </th>
-                    <td> {{realWeight}} </td>
-                </tr>
-                <tr>
-                    <th>Cost :</th>
-                    <td> {{total}} </td>
-                </tr>
-            </table>
         </div>
     </div>
 
+    <div class="row displayResult" [hidden] = "displayResultDiv" >
+        <table class="table table-sm">
+            <tr>
+                <th>Name of Commodity :</th>
+                <td> {{commoName}} </td>
+            </tr>
+            <tr>
+                <th>Type of Commodity :</th>
+                <td> {{commoType}} </td>
+            </tr>
+            <tr>
+                <th>Metal Price :</th>
+                <td> {{commoPrice}} </td>
+            </tr>
+            <tr>
+                <th>Weight of Metal :</th>
+                <td> {{weight}} </td>
+            </tr>
+            <tr>
+                <th>Purity % :</th>
+                <td> {{purity}} </td>
+            </tr>
+            <tr>
+                <th>Labour % :</th>
+                <td> {{labour}} </td>
+            </tr>
+            <tr>
+                <th>Making % :</th>
+                <td> {{making}} </td>
+            </tr>
+            <tr>
+                <th>Wastage % :</th>
+                <td> {{wastage}} </td>
+            </tr>
+            <tr>
+                <th>Total Wastage % :</th>
+                <td> {{wastePercentage}} </td>
+            </tr>
+            <tr>
+                <th>Weight After Calculation :</th>
+                <td> {{deductWeight}} </td>
+            </tr>
+            <tr>
+                <th>Weight Wastage </th>
+                <td> {{realWeight}} </td>
+            </tr>
+            <tr>
+                <th>Cost :</th>
+                <td> {{total}} </td>
+            </tr>
+        </table>
+    </div>
 </form>
 
 </div>

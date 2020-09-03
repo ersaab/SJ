@@ -11,6 +11,7 @@ export class QuickQuoteComponent implements OnInit {
   commoType;
   commoPrice;
   weight;
+  purity;
   labour;
   wastage;
   making;
@@ -19,6 +20,7 @@ export class QuickQuoteComponent implements OnInit {
   realWeight;
   piecetable: boolean = false;
   weighttable: boolean = false;
+  displayResultDiv: boolean = true;
   total;
 
   psel(){
@@ -30,6 +32,11 @@ export class QuickQuoteComponent implements OnInit {
     this.weighttable = true;
     this.piecetable = false;
   }
+  displayResult()
+  {
+    this.displayResultDiv = false;
+  }
+
   calc(data)
   {
     this.commoName = data.commoName;
@@ -39,22 +46,23 @@ export class QuickQuoteComponent implements OnInit {
     this.labour = data.labour;
     this.wastage = data.wastage;
     this.making = data.making;
-    this.wastePercentage = (data.labour + data.making + data.wastage)/100;
-    this.deductWeight = (this.wastePercentage * data.weight);
+    this.purity = data.purity;
+    this.wastePercentage = (data.purity + data.labour + data.making + data.wastage);
+    this.deductWeight = (this.wastePercentage)/100 * data.weight;
     this.realWeight = data.weight - this.deductWeight;
-    this.total = data.commoPrice * this.realWeight;
-    alert(
-      " Name " +data.commoName + " \n " +
-      " Type " +data.commoType + " \n " +
-      " Gold Rate " +data.commoPrice + " \n " +
-      " Weight of Metal " +data.weight + " \n " +
-      " Labour % " +data.labour + " \n " +
-      " Wastage % " +data.wastage + " \n " +
-      " Making % " +data.making + " \n " +
-      " Real Gold Weight " +this.realWeight + " \n " +
-      " Total Waste Percentage " +this.wastePercentage + " \n " +
-      " Total Cost " +this.total + " \n "
-      )
+    this.total = data.commoPrice * this.deductWeight;
+    // alert(
+    //   " Name " +data.commoName + " \n " +
+    //   " Type " +data.commoType + " \n " +
+    //   " Gold Rate " +data.commoPrice + " \n " +
+    //   " Weight of Metal " +data.weight + " \n " +
+    //   " Labour % " +data.labour + " \n " +
+    //   " Wastage % " +data.wastage + " \n " +
+    //   " Making % " +data.making + " \n " +
+    //   " Real Gold Weight " +this.realWeight + " \n " +
+    //   " Total Waste Percentage " +this.wastePercentage + " \n " +
+    //   " Total Cost " +this.total + " \n "
+    //   )
   }
   constructor() {}
 
