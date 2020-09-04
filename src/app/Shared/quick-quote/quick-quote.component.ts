@@ -8,8 +8,11 @@ import { FormsModule } from '@angular/forms';
 })
 export class QuickQuoteComponent implements OnInit {
   commoName;
+  commoAddress;
+  commoPhone;
   commoType;
   commoPrice;
+  desc;
   piecePrice;
   piece;
   moneyTotal;
@@ -49,7 +52,10 @@ export class QuickQuoteComponent implements OnInit {
   pcalc(data)
   {
     this.commoName = data.commoName;
+    this.commoAddress = data.commoAddress;
+    this.commoPhone = data.commoPhone;
     this.commoType = data.commoType;
+    this.desc = data.desc;
     this.commoPrice = data.commoPrice;
     this.piece = data.piece;
     this.piecePrice = data.piecePrice;
@@ -59,8 +65,11 @@ export class QuickQuoteComponent implements OnInit {
   wcalc(data)
   {
     this.commoName = data.commoName;
+    this.commoAddress = data.commoAddress;
+    this.commoPhone = data.commoPhone;
     this.commoType = data.commoType;
     this.commoPrice = data.commoPrice;
+    this.desc = data.desc;
     this.weight = data.weight;
     this.labour = data.labour;
     this.wastage = data.wastage;
@@ -72,6 +81,19 @@ export class QuickQuoteComponent implements OnInit {
     this.total = data.commoPrice * this.deductWeight;
     this.goldTotal = this.total/data.commoPrice;
   }
+
+  print(data)
+  {
+    let printContents = document.getElementById(data).innerHTML;
+     let originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+  }
+
   constructor() {}
 
   ngOnInit(): void {

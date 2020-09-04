@@ -14,8 +14,21 @@
     <div [hidden] = "!piecetable" class="container-fluid">
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="CommoName" >ਨਾਮ (Name of Customer):</label>
-                <input type="text" class="form-control" name="commoName" ngModel>
+                <label for="commoName" >ਨਾਮ (Name of Customer):</label>
+                <input type="name" class="form-control" name="commoName" ngModel>
+            </div>
+        </div>
+        <div class="row form-group ">
+            <div class="col-sm-12">
+                <label for="commoPhone" >ਫੋਨ ਨੰਬਰ (Phone Number):</label>
+                <input type="number" class="form-control" name="commoPhone" step="0.01" ngModel>
+            </div>
+        </div>
+        <div class="row form-group ">
+            <div class="col-sm-12">
+                <label for="commoAddress" >ਪਤਾ (Address):</label>
+                <!-- <input type="textbox" class="form-control" name="commoAddress" ngModel> -->
+                <textarea class="form-control" id="commoAddress" name="commoAddress" rows="3" ngModel></textarea>
             </div>
         </div>
         <div class="row form-group ">
@@ -30,68 +43,121 @@
         </div>
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="metalOfCommo" > ਇੱਕ ਗਰਾਮ ਦਾ ਭਾਅ   (Metal Price) <span class="p">/gram</span>:</label>
+                <label for="commoPrice" > ਇੱਕ ਗਰਾਮ ਦਾ ਭਾਅ   (Metal Price) <span class="p">/gram</span>:</label>
                 <input type="text" class="form-control" name="commoPrice" ngModel>
             </div>
         </div>
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="weight" > ਪੀਸ ਦਾ ਰੇਟ (Piece Price): <span class="p"> /piece</span></label>
+                <label for="desc" > ਵੇਰਵਾ (Description): </label>
+                <textarea class="form-control" id="desc" name="desc" rows="5" ngModel ></textarea>
+            </div>
+        </div>
+        <div class="row form-group ">
+            <div class="col-sm-12">
+                <label for="piecePrice" > ਪੀਸ ਦਾ ਰੇਟ (Piece Price): <span class="p"> /piece</span></label>
                 <input type="number" class="form-control" name="piecePrice" step="0.01" ngModel>
             </div>
         </div>
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="weight" > ਪੀਸਾਂ ਦੀ ਗਿਣਤੀ (Piece Count): <span class="p"> in number</span></label>
+                <label for="piece" > ਪੀਸਾਂ ਦੀ ਗਿਣਤੀ (Piece Count): <span class="p"> in number</span></label>
                 <input type="number" class="form-control" name="piece" step="0.01" ngModel>
             </div>
         </div>
         <div class="row ">
-            <div class="col-sm-12">
+            <div class="col-sm-6">
                 <button class="btn btn-success" (click) = "displayResultP()"  type="submit">ਹਿਸਾਬ ਲਗਾਓ (Calculate)</button>
+            </div>
+            <div class="col-sm-6">
+                <button class="btn btn-success" [hidden] = "displayResultPiece" (click) = "print('resultPiece')">Print</button>
             </div>
         </div>
     </div>
-    <div class="row displayResult" [hidden] = "displayResultPiece" >
-        <table class="table table-sm">
+
+    <div class="jumbotron displayResultP" id="resultPiece" [hidden] = "displayResultPiece" >
+            <div class="memo text-center">
+                <h2 class="card-title">Cash Memo</h2>
+            </div>
+        <div class="col-sm-12">
+            <div class="col-sm-6 custDetails">
+                <p>Customer : Cash</p>
+                <p>ਨਾਮ (Name) : {{commoName}}</p>
+                <p>ਫੋਨ ਨੰਬਰ (Phone Number) : {{commoPhone}} </p>
+                <Address>ਪਤਾ (Address): {{commoAddress}} </Address>
+            </div>
+            <div class="col-sm-6"></div>
+            </div>
+                
+        
+        <table class="table table-xl ">
             <tr>
-                <th>Name of Customer :</th>
-                <td> {{commoName}} </td>
-            </tr>
-            <tr>
-                <th>Type of Commodity :</th>
+                <th>ਧਾਤ (Metal) :</th>
                 <td> {{commoType}} </td>
             </tr>
             <tr>
-                <th>Metal Price :</th>
+                <th>ਇੱਕ ਗਰਾਮ ਦਾ ਭਾਅ   (Metal Price) <span class="p">/gram</span> :</th>
                 <td> {{commoPrice}} Rupees/gram </td>
             </tr>
+            <tr style="height: 100px;">
+                <th>ਵੇਰਵਾ (Details) :</th>
+                <td> {{desc}} </td>
+            </tr>
             <tr>
-                <th>Piece Count :</th>
+                <th> ਪੀਸਾਂ ਦੀ ਗਿਣਤੀ (Piece Count) :</th>
                 <td> {{piece}} Pieces</td>
             </tr>
             <tr>
-                <th>Piece Price :</th>
+                <th>ਪੀਸ ਦਾ ਰੇਟ (Piece Price) :</th>
                 <td> {{piecePrice}} Rupees</td>
             </tr>
             <tr>
-                <th>Total :</th>
+                <th> ਟੋਟਲ (Total) :</th>
                 <td> {{moneyTotal}} Rupees </td>
             </tr>
             <tr>
-                <th>Metal :</th>
+                <th>ਧਾਤ (Metal Payment in Gram) :</th>
                 <td> {{goldTotal}} grams </td>
             </tr>
         </table>
-    </div>
+        <br><br>
+        <div class="sign">
+            <div class="col-sm-6"><h4>Customer Signature: </h4>
+                <br><br>
+                <hr>
+            </div>
+        </div>
+        <div class="rules">
+            <ul>
+            <p>Terms & Conditions</p>
+                <li>All Products are Final Sale. No Returns or Exchange for Cash Purchases.</li>
+                <li>Check weight before leaving.</li>
+                <li>Company is not responsible for any kind of Weight Changes after final Sale.</li>
+                <li>No Warranty Guaranty on any item.</li>
+                <li>You are purchasing this stuff on your own.</li>
+            </ul>
+        </div>
+</div>
 </form>
 
 <form #weightCalc = "ngForm" class="form-group" (ngSubmit) = "wcalc(weightCalc.value)" >
     <div [hidden] = "!weighttable" class="container-fluid">
         <div class="row form-group ">
             <div class="col-sm-12">
-                <label for="CommoName" >ਨਾਮ (Name of Customer):</label>
-                <input type="text" class="form-control" name="commoName" ngModel>
+                <label for="commoName" >ਨਾਮ (Name of Customer):</label>
+                <input type="name" class="form-control" name="commoName" ngModel>
+            </div>
+        </div>
+        <div class="row form-group ">
+            <div class="col-sm-12">
+                <label for="commoPhone" >ਫੋਨ ਨੰਬਰ (Phone Number):</label>
+                <input type="number" class="form-control" name="commoPhone" step="0.01" ngModel>
+            </div>
+        </div>
+        <div class="row form-group ">
+            <div class="col-sm-12">
+                <label for="commoAddress" >ਪਤਾ (Address):</label>
+                <input type="textbox" class="form-control" name="commoAddress" ngModel>
             </div>
         </div>
         <div class="row form-group ">
@@ -108,6 +174,12 @@
             <div class="col-sm-12">
                 <label for="metalOfCommo" > ਇੱਕ ਗਰਾਮ ਦਾ ਭਾਅ   (Metal Price) <span class="p">/gram</span>:</label>
                 <input type="text" class="form-control" name="commoPrice" ngModel>
+            </div>
+        </div>
+        <div class="row form-group ">
+            <div class="col-sm-12">
+                <label for="desc" > ਵੇਰਵਾ (Description): </label>
+                <textarea class="form-control" id="desc" name="desc" rows="5" ngModel ></textarea>
             </div>
         </div>
         <div class="row form-group ">
@@ -140,68 +212,101 @@
                 <input type="number" class="form-control" name="wastage" step="0.01" ngModel>
             </div>
         </div>
-        <div class="row ">
-            <div class="col-sm-12">
+        
+        <div class="col-sm-12">
+            <div class="col-sm-6">
                 <button class="btn btn-success" (click) = "displayResultW()"  type="submit">ਹਿਸਾਬ ਲਗਾਓ (Calculate)</button>
+            </div>
+            <div class="col-sm-6">
+                <button class="btn btn-success" [hidden] = "displayResultWeight" (click) = "print('resultWeight')">Print</button>
             </div>
         </div>
     </div>
 
-    <div class="row displayResult" [hidden] = "displayResultWeight" >
-        <table class="table table-sm">
-            <tr>
-                <th>Name of Customer :</th>
-                <td> {{commoName}} </td>
-            </tr>
-            <tr>
-                <th>Type of Commodity :</th>
-                <td> {{commoType}} </td>
-            </tr>
-            <tr>
-                <th>Metal Price :</th>
-                <td> {{commoPrice}} Rupees/gram </td>
-            </tr>
-            <tr>
-                <th>Weight of Metal :</th>
-                <td> {{weight}} grams </td>
-            </tr>
-            <tr>
-                <th>Purity % :</th>
-                <td> {{purity}}% </td>
-            </tr>
-            <tr>
-                <th>Labour % :</th>
-                <td> {{labour}}% </td>
-            </tr>
-            <tr>
-                <th>Making % :</th>
-                <td> {{making}}% </td>
-            </tr>
-            <tr>
-                <th>Wastage % :</th>
-                <td> {{wastage}}% </td>
-            </tr>
-            <tr>
-                <th>Total Wastage % :</th>
-                <td> {{wastePercentage}}% </td>
-            </tr>
-            <tr>
-                <th>Weight Wastage </th>
-                <td> {{realWeight}} grams </td>
-            </tr>
-            <tr>
-                <th>Weight After Calculation :</th>
-                <td> {{deductWeight}} grams </td>
-            </tr>
-            <tr>
-                <th>Cost :</th>
-                <td> {{total}} Rupees </td>
-            </tr>
-            <tr>
-                <th>Metal :</th>
-                <td> {{goldTotal}} grams </td>
-            </tr>
-        </table>
+    <div class="jumbotron displayResultW" [hidden] = "displayResultWeight" id="resultWeight" >
+        <div class="memo text-center">
+            <h2 class="card-title">Cash Memo</h2>
+        </div>
+        <div class="col-sm-12">
+        <div class="col-sm-6 custDetails">
+            <p>Customer : Cash</p>
+            <p>ਨਾਮ (Name) : {{commoName}}</p>
+            <p>ਫੋਨ ਨੰਬਰ (Phone Number) : {{commoPhone}} </p>
+            <Address>ਪਤਾ (Address): {{commoAddress}} </Address>
+        </div>
+        <div class="col-sm-6"></div>
+        </div>
+            
+    
+    <table class="table table-xl ">
+        <tr>
+            <th>ਧਾਤ (Metal) :</th>
+            <td> {{commoType}} </td>
+        </tr>
+        <tr>
+            <th>ਇੱਕ ਗਰਾਮ ਦਾ ਭਾਅ   (Metal Price) <span class="p">/gram</span> :</th>
+            <td> {{commoPrice}} Rupees/gram </td>
+        </tr>
+        <tr style="height: 100px;">
+            <th>ਵੇਰਵਾ (Details) :</th>
+            <td> {{desc}} </td>
+        </tr>
+        <tr>
+            <th>ਵਜਨ (Weight) :</th>
+            <td> {{weight}} grams </td>
+        </tr>
+        <tr>
+            <th>ਟੈੰਚ (Purity) % :</th>
+            <td> {{purity}}% </td>
+        </tr>
+        <tr>
+            <th>ਲੇਬਰ (Labour) % :</th>
+            <td> {{labour}}% </td>
+        </tr>
+        <tr>
+            <th>ਬਣਵਾਈ (Making) % :</th>
+            <td> {{making}}% </td>
+        </tr>
+        <tr>
+            <th>ਵੇਸਟੇਜ/ਵੇਸਟੀ (Wastage) % :</th>
+            <td> {{wastage}}% </td>
+        </tr>
+        <tr>
+            <th> ਟੋਟਲ ਵੇਸਟੇਜ/ਵੇਸਟੀ  (Total Wastage) % :</th>
+            <td> {{wastePercentage}}% </td>
+        </tr>
+        <tr>
+            <th>ਟੋਟਲ ਵੇਸਟੇਜ/ਵੇਸਟੀ  (Total Wastage) <span class="p">in gram</span> : </th>
+            <td> {{realWeight}} grams </td>
+        </tr>
+        <tr>
+            <th> ਖਰਾ ਸੋਨਾ (Real Metal) :</th>
+            <td> {{deductWeight}} grams </td>
+        </tr>
+        <tr>
+            <th> ਟੋਟਲ (Cost) :</th>
+            <td> {{total}} Rupees </td>
+        </tr>
+    </table>
+
+
+    <br><br>
+    <div class="sign">
+        <div class="col-sm-6"><h4>Customer Signature: </h4>
+            <br><br>
+            <hr>
+        </div>
+    </div>
+    <div class="rules" style="padding-top: 0%;">
+        <ul>
+        <p>Terms & Conditions</p>
+            <li>All Products are Final Sale. No Returns or Exchange for Cash Purchases.</li>
+            <li>Check weight before leaving.</li>
+            <li>Company is not responsible for any kind of Weight Changes after final Sale.</li>
+            <li>No Warranty Guaranty on any item.</li>
+            <li>You are purchasing this stuff on your own.</li>
+        </ul>
+    </div>
     </div>
 </form>
 </div>

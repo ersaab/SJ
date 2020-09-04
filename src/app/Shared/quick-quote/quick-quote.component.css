@@ -4,3 +4,37 @@
     color: red;
     font-weight: 600;
 }
+.displayResult
+{
+    height: 1900;
+    width: 1080;
+    margin: 0%;
+    color: black;
+    font-family: Helvetica;
+}
+
+.memo
+{
+    color: navy;
+    font-weight: 900;
+    font-size: 36px;
+}
+.custDetails
+{
+    color: black;
+    font-weight: 500;
+    font-size: 18px;
+}
+.table th{
+    font-weight: 200;
+    font-size: 20px;
+}
+table td{
+    font-size: 18px;
+}
+.rules
+{
+    font-size: 13px;
+    padding: 2px;
+    padding-top: 300px;
+}
