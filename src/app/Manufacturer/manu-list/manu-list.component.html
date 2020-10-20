@@ -1,1 +1,18 @@
-<p>manu-list works!</p>
+<div class="container-fluid">
+    <form #budgetCalc = "ngForm" class="form-group" (ngSubmit) = "calculate(budgetCalc.value)" >
+        <div class="row form-group ">
+            <div class="col-sm-12">
+                <label for="budget" >Budget: </label>
+                <input type="number" class="form-control" name="budgetAmount" ngModel>
+            </div>
+        </div>
+        <div class="row form-group text-center">
+            <div class="col-sm-6">
+                <button class="btn btn-success"  type="submit">Calculate</button>
+            </div>
+            <div class="col-sm-6">
+                <button class="btn btn-info" type="reset" >Reset</button>
+            </div>
+        </div>
+    </form>
+</div>
